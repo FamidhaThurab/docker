@@ -1,0 +1,32 @@
+# you can execute the command 'docker-compose version' to get this value of it.
+version: '2.2'
+services:
+    # service name. it's custom.
+    ubuntu:
+      # docker images name
+      image: jenkins-agent
+       
+      # the name of the container that will be created.
+      # amount to the parameter '--name' of the command 'docker run --name'
+      container_name: ubuntu18-node
+       
+      # amount to the parameter '-i' of the command 'docker run -i'
+      stdin_open: true
+       
+      # amount to the parameter '-t' of the command 'docker run -t'
+      tty: true
+       
+      # amount to the parameter '-h/--hostname' of the command 'docker run -h/--hostname'
+      hostname: ubuntu18
+       
+      # amount to the parameter '--restart' of the command 'docker run --restart'
+      restart: always
+       
+      # amount to the parameter '-p/--publish' of the command 'docker run -p/--publish'
+      ports:
+        - "5000:22"
+       
+      # amount to the parameter '-v/--volume' of the command 'docker run -v/--volume'
+      volumes:
+        - /home/<username>:/home
+        - /etc/localtime:/etc/localtime:ro
