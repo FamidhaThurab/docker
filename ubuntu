@@ -83,7 +83,7 @@ RUN apt update && apt install openssh-server sudo -y
 RUN groupadd -g <grp-id> <username> && \
     useradd -u <user-id> -g <username> -s /bin/bash -m -d /home/<username> <username> && usermod -aG sudo <username>
 
-RUN wget --user <username> --password <password> https://artifactory.com:443/artifactory/platform_docker_registry/ubuntu/<username>.tar -P /home/<username> && tar -xvf /home/<username>/<username>.tar -C /home/<username>/ && \
+RUN wget --user <username> --password <password> <artifactory-url>/<username>.tar -P /home/<username> && tar -xvf /home/<username>/<username>.tar -C /home/<username>/ && \
     mv /home/<username>/ssh /home/<username>/.ssh && cp /home/<username>/.ssh/gitconfig  /home/<username>/.gitconfig && rm /home/<username>/<username>.tar
 
 # Set a password for the user (Change 'your_password' to your desired password)
