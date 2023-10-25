@@ -86,8 +86,8 @@ RUN groupadd -g <grp-id> <username> && \
 RUN wget --user <username> --password <password> https://artifactory.com:443/artifactory/platform_docker_registry/ubuntu/<username>.tar -P /home/<username> && tar -xvf /home/<username>/<username>.tar -C /home/<username>/ && \
     mv /home/<username>/ssh /home/<username>/.ssh && cp /home/<username>/.ssh/gitconfig  /home/<username>/.gitconfig && rm /home/<username>/<username>.tar
 
-# Set a password for the "superman" user (Change 'your_password' to your desired password)
-RUN echo '<username>:123456' | chpasswd
+# Set a password for the user (Change 'your_password' to your desired password)
+RUN echo '<username>:<password>' | chpasswd
 
 # start sshd service when container start
 RUN service ssh start
